@@ -1,0 +1,42 @@
+[
+  {
+    "file": "化工升2601-学号-姓名-A2图幅样板横向.dwg",
+    "signature": "AC1015 / DWG 2000",
+    "entity_counts": {
+      "LINE": 26,
+      "TEXT": 22,
+      "LWPOLYLINE": 1
+    },
+    "roundtrip_entity_geometry_and_text": "PASS",
+    "dimstyle_and_layers": "PASS",
+    "independent_edit_test": "PASS",
+    "pdf_page_mm": [
+      594.000177001953,
+      419.99994506835935
+    ],
+    "pdf_vector_and_chinese": "PASS",
+    "autocad_2022_open_save": "NOT RUN: no Windows AutoCAD",
+    "specified_shx_fonts": "MISSING: alternative font used",
+    "native_dwg_edit_save_reopen": "PASS: move LINE and replace Chinese TEXT in temporary DWG; originals preserved"
+  },
+  {
+    "file": "化工升2601-学号-姓名-A2图幅样板竖向.dwg",
+    "signature": "AC1015 / DWG 2000",
+    "entity_counts": {
+      "LINE": 26,
+      "TEXT": 22,
+      "LWPOLYLINE": 1
+    },
+    "roundtrip_entity_geometry_and_text": "PASS",
+    "dimstyle_and_layers": "PASS",
+    "independent_edit_test": "PASS",
+    "pdf_page_mm": [
+      419.99994506835935,
+      594.000177001953
+    ],
+    "pdf_vector_and_chinese": "PASS",
+    "autocad_2022_open_save": "NOT RUN: no Windows AutoCAD",
+    "specified_shx_fonts": "MISSING: alternative font used",
+    "native_dwg_edit_save_reopen": "PASS: move LINE and replace Chinese TEXT in temporary DWG; originals preserved"
+  }
+]

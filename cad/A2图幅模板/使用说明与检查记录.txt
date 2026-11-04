@@ -1,0 +1,50 @@
+﻿A2 横向、竖向图幅模板：交付说明
+
+主文件：两个独立 DWG，两个对应 PDF。班级暂为化工升2601，学号、姓名保留占位符。
+横向纸张 594×420 mm；图框 (25,10)—(584,410)。
+竖向纸张 420×594 mm；图框 (25,10)—(410,584)。
+两份标题栏均为 180×56 mm，右下角与图框对齐，采用按截图信息重建的常用布局，非原图逐格复刻。
+单位、图样名称、图样代号和人员签署均留空；比例为1:1。
+
+重要差异与使用前操作
+1. 缺少 gbeitc.shx 和 gbcbig.shx，因此本次文字实际使用 Noto Serif SC 替代，未满足指定长仿宋字体要求。DWG 中保留 GB-FANGSONG 样式定义（引用这两个SHX），但文字当前使用 CJK-FALLBACK 样式。
+2. 辅助资料/字体/NotoSerifSC-Regular.ttf 为实际使用的开放许可中文字体。Windows 上先安装该字体，再打开 DWG；也可将字体所在目录加入 AutoCAD 支持路径。不能保证未安装字体的其他电脑上自动保持外观。PDF 已嵌入文字字形，不依赖本机字体。
+3. 获得指定SHX后，放入AutoCAD支持路径，将 CJK-FALLBACK 的字体改为 gbeitc.shx、大字体改为 gbcbig.shx；或用QSELECT选中文字改用GB-FANGSONG。重新检查字宽和位置，再输出PDF。GB-25当前也引用CJK-FALLBACK。
+4. DWG 为真正的 AC1015 / DWG 2000 二进制文件，属于 AutoCAD 2022 能向下兼容读取的格式。由 LibreDWG 对象API直接生成，不是DXF改后缀；由于Linux云环境无AutoCAD，未执行AutoCAD 2022打开、AUDIT和另存操作，也未验证Autodesk原生渲染。请在AutoCAD 2022打开后运行AUDIT、REGENALL并另存。
+5. 原始作业截图分辨率较低，标题栏细分与图层颜色按常用工程制图方法处理，不能声称与截图完全一致。此交付不是“全部原始条件已验收通过”的版本。
+
+实体与样式
+每份模型空间：1个闭合LWPOLYLINE图框、26条LINE、22个TEXT，无图片、无插入块、无多余尺寸标注。图框和标题栏共享边线，避免边线重叠。
+图层（英文名用于跨版本兼容）：
+FRAME 图框：颜色7、CONTINUOUS、0.70mm。
+TITLE 标题栏：颜色7、CONTINUOUS、0.35mm。
+TEXT 文字：颜色3、CONTINUOUS、0.18mm。
+DIM 尺寸标注：颜色2、CONTINUOUS、0.25mm。
+THICK 粗实线：颜色7、CONTINUOUS、0.70mm。
+THIN 细实线：颜色7、CONTINUOUS、0.35mm。
+HIDDEN 虚线：颜色2、HIDDEN、0.35mm。
+CENTER 点画线：颜色1、CENTER、0.35mm。
+
+GB-25：DIMDLI=7，DIMEXE=2，DIMEXO=0，DIMASZ=3.5，DIMTXT=3.5，DIMGAP=1，比例1，毫米制。未在空白模板中添加尺寸对象。
+
+打印
+PDF横向594×420mm，竖向420×594mm，均为单页黑白矢量PDF，已核对页面大小、图框坐标、线宽和中文显示。
+打印PDF请选择实际大小/100%，关闭适合页面和自动缩放；选择对应A2纸张。需要打印机具备覆盖这些图框边距的打印能力。
+DWG模型空间保存了A2纸张、全纸窗口、毫米、1:1和monochrome.ctb设置。不同电脑的PC3和介质名可能需要在PLOT中重新选定：DWG To PDF.pc3，正确方向的A2，窗口(0,0)到(纸宽,纸高)，偏移(0,0)，比例1mm=1单位，黑白打印。默认空白Layout1不是第二张模板，图幅实体位于Model。
+
+已通过的检查
+- 两套尺寸、边距、右下标题栏位置与180×56mm外形。
+- 模型空间原生实体数量、几何坐标和中文内容回读完全一致。
+- DWG回读审计：0错误、0自动修复；图层、线型、线宽、字体引用、毫米单位和打印比例已检查。
+- GB-25指定六参数直接从DWG对象读取验证，避免DXF导出省略零值的影响。
+- 在临时DWG中实际移动一条直线、替换一段中文文字，保存并重新打开验证通过；交付原件未被测试修改。
+- PDF独立检查：正确A2页面，单页，无栅格图片，文字可提取，整页和标题栏放大检查通过。
+未执行：AutoCAD 2022实机打开、另存与打印；指定SHX实际渲染；原始高清截图逐格对照。
+
+来源与许可证
+CAD技能参考：https://github.com/delancy827/cad-skills （MIT）。
+几何和DXF辅助：ezdxf（MIT），https://github.com/mozman/ezdxf。
+DWG读写：GNU LibreDWG 0.13.3（GPL-3.0-or-later），https://github.com/LibreDWG/libredwg。
+转换工具未随此交付包分发；DWG使用其对象API直接创建，绕过DXF导入器的不兼容对象问题。
+中文替代字体：Noto Serif SC，Google Fonts官方来源，SIL Open Font License 1.1，许可证附在辅助资料/字体/OFL.txt。
+PDF生成：ReportLab；检查：PyMuPDF。
